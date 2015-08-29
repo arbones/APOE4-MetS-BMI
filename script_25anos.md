@@ -1,4 +1,4 @@
-Last updated: 2015-08-29 19:24:32
+Last updated: 2015-08-29 19:45:31
 
 ``` r
 require(dplyr)
@@ -57,7 +57,7 @@ df$e4[df$y00_DL5APOE%in%c('4/4')]='11'
 df$e4=as.factor(df$e4)
 ```
 
-Selección de variables a utilizar
+Selección de variables a utilizar.
 
 ``` r
 df=select(df,PID, apoe4=y00_apoe4,contains('BMI'),contains('_MetS'),
