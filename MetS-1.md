@@ -1,13 +1,13 @@
 Data frame sin purgar
 ---------------------
 
-### tipo de trabajo
+#### tipo de trabajo
 
 ``` r
 wt <- read.delim("~/Dropbox/SyncBriefcase/LAB/IACS/AWHS/datos.asociados/R/WKTYPE_oct.txt")
 ```
 
-### primera cesion de datos (Oct/2012)
+#### primera cesion de datos (Oct/2012)
 
 ``` r
 oct <- read.delim("~/Dropbox/SyncBriefcase/LAB/IACS/AWHS/datos.asociados/R/datosAsociadosMuestrasCesionJMArbones20120110.txt")
@@ -16,22 +16,22 @@ oct2=merge(oct,wt,by='CODALIC1',all.x=T)
 oct3=subset(oct2,select=-c(CODPLAC2,CODALIC2))
 ```
 
-### segunda cesion de datos (Julio/2013)
+####segunda cesion de datos (Julio/2013)
 
 ``` r
 julio <- read.delim("~/Dropbox/SyncBriefcase/LAB/IACS/AWHS/datos.asociados/R/datosAsociadosMuestrasCesionJMArbones_20130731.txt")
 ```
 
-### Merge las dos dataframes
+#### Merge las dos dataframes
 
-### t1--\>data frame sin purgar
+#### t1--\>data frame sin purgar
 
 ``` r
 t1=rbind(oct3,julio)
 ```
 
-Carga data frame ya purgada
----------------------------
+## Carga data frame ya purgada
+
 
 NO HAY RECORDS DEL PROCESO DE PURGA !!!!!
 
@@ -78,7 +78,7 @@ t1ms$num.ms=t1ms$waist.ms+t1ms$hta.ms+t1ms$glu.ms+t1ms$tg.ms+t1ms$hdl.ms
 t1ms$metS=ifelse(t1ms$num.ms>=3,1,0)
 ```
 
-### ms3\>\>\>hipolipemiantes contabilizados en el criterio de TRIGLICERIDOS
+### ms2\>\>\>hipolipemiantes contabilizados en el criterio de TRIGLICERIDOS
 
 ``` r
 t1ms$tg.ms2=ifelse(t1ms$LBXTR<=150& (is.na(t1ms$MEQLIPID) | t1ms$MEQLIPID==0),0,1)
@@ -89,7 +89,7 @@ t1ms$num.ms2=t1ms$waist.ms+t1ms$hta.ms+t1ms$glu.ms+t1ms$tg.ms2+t1ms$hdl.ms2
 t1ms$metS2=ifelse(t1ms$num.ms2>=3,1,0)
 ```
 
-### ms3\>\>\>hipolipemiantes contabilizados en el criterio de TRIGLICERIDOS
+### ms3\>\>\>NO se tienen en cuanta los hipolipemiantes
 
 ``` r
 t1ms$tg.ms3=ifelse(t1ms$LBXTR>=150,1,0)
